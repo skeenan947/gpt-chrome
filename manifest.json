@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Content Assistant",
+  "version": "1.0",
+  "description": "Chat with the current web page content using OpenAI.",
+  "permissions": ["storage", "activeTab", "scripting", "contextMenus", "sidePanel"],
+  "action": {
+    "default_icon": {}
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {},
+  "web_accessible_resources": [
+    {
+      "resources": ["settings.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}
