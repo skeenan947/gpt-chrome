@@ -18,6 +18,15 @@ console.log("Page content:", document.body.innerText);
 
 // Send the page content back to the background script
 chrome.runtime.sendMessage({ content: document.body.innerText }, (response) => {
+    if (!document.location.href.startsWith('chrome://')) {
+        chrome.runtime.sendMessage({ content: document.body.innerText }, (response) => {
+            if (chrome.runtime.lastError) {
+                console.error("Error sending message:", chrome.runtime.lastError.message);
+            } else {
+                console.log("Response from background:", response);
+            }
+        });
+    }
     if (chrome.runtime.lastError) {
         console.error("Error sending message:", chrome.runtime.lastError.message);
     } else {
