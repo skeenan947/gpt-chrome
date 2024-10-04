@@ -3,7 +3,7 @@
   "name": "Content Assistant",
   "version": "1.0",
   "description": "Chat with the current web page content using OpenAI.",
-  "permissions": ["storage", "activeTab", "scripting", "contextMenus", "sidePanel"],
+  "permissions": ["storage", "activeTab", "scripting", "contextMenus", "sidePanel", "tabs"],
   "action": {
     "default_icon": {}
   },

@@ -124,7 +124,8 @@ function formatMessage(message) {
     return message
         .replace(/```(\w+)?\s*([^`]+)```/g, (match, codeType, code) => {
             const escapedCode = escapeHTML(code);
-            return `<pre style="background-color: #f8f8f8; border: 1px solid #ccc; border-radius: 5px; padding: 5px; white-space: pre-wrap; margin-left: 30px; color: #333;">${escapedCode}</pre>`;
+            const languageClass = codeType ? ` class="language-${codeType}"` : '';
+            return `<pre${languageClass} style="background-color: #f8f8f8; border: 1px solid #ccc; border-radius: 5px; padding: 5px; white-space: pre-wrap; margin-left: 30px; color: #333;"><code>${escapedCode}</code></pre>`;
         })
         .replace(/`([^`]+)`/g, (match, p1) => `<code style="background-color: #f8f8f8; border: 1px solid #ccc; border-radius: 3px; padding: 2px; margin-left: 20px; color: #333;">${escapeHTML(p1)}</code>`)
         .replace(/\n/g, '<br>'); // Convert newlines to <br> for HTML display
