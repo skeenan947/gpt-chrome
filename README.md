@@ -39,12 +39,13 @@ This guide will walk you through the process of installing the **ChatGPT Content
 ## Usage Instructions
 
 1. **Add Your OpenAI API Key**:
-- Click on the extension icon in the toolbar to open the settings.
+- Right Click on the extension icon in the toolbar and click "Open Settings".
 - Enter your OpenAI API key in the provided input field and click "Save" to store it securely.
 
 2. **Using the Extension**:
 - Click on the extension icon in the toolbar to bring up the sidebar.
 - The sidebar will allow you to interact with the current web page content using the ChatGPT model.
+- Choosing a different tab will allow you to continue your chat with the context from the previous page.  Click "Clear Conversation" if you don't want the previous context to carry over.
 - Follow any additional setup instructions provided in the extension interface.
 
 ## Notes
