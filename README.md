@@ -1,7 +1,7 @@
 markdown
 # ChatGPT Content Assistant Chrome Extension
 
-This guide will walk you through the process of installing the **ChatGPT Content Assistant** Chrome extension directly from its GitHub repository.
+This guide will walk you through the process of installing the **ChatGPT Content Assistant** Chrome extension directly from its GitHub repository and provide usage instructions.
 
 ## Prerequisites
 
@@ -36,8 +36,15 @@ This guide will walk you through the process of installing the **ChatGPT Content
 - After successfully loading the extension, you should see the **ChatGPT Content Assistant** listed among your installed extensions.
 - If you encounter any errors, ensure the manifest.json file is present.
 
-7. **Using the Extension**:
-- Click on the extension icon in the toolbar to start using the ChatGPT Content Assistant.
+## Usage Instructions
+
+1. **Add Your OpenAI API Key**:
+- Click on the extension icon in the toolbar to open the settings.
+- Enter your OpenAI API key in the provided input field and click "Save" to store it securely.
+
+2. **Using the Extension**:
+- Click on the extension icon in the toolbar to bring up the sidebar.
+- The sidebar will allow you to interact with the current web page content using the ChatGPT model.
 - Follow any additional setup instructions provided in the extension interface.
 
 ## Notes
