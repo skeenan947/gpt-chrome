@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentDisplay = document.getElementById('contentDisplay');
 
     if (userInput) {
+        userInput.focus()
         // Set a minimum height and allow vertical scrolling
         userInput.style.minHeight = '50px'; // Adjust as needed
         userInput.style.overflowY = 'auto';
@@ -162,7 +163,7 @@ function formatMessage(message) {
 
 async function callOpenAI(pageContent, input, apiKey) {
     const messages = [
-      { role: "system", content: "You are a document summarization and chat assistant.  If the content to be returned is in markdown, do not surround the markdown block in ```.  If the content is empty, tell the user that I cannot read the page contents, and ask the user to copy/paste the page content into the chat" },
+      { role: "system", content: "You are a document summarization and chat assistant.  If the content to be returned is in markdown, do not surround the markdown block in ```.  ONLY If the content is empty AND the user input doesn't contain content to use, tell the user that I cannot read the page contents, and ask the user to copy/paste the page content into the chat" },
       { role: "user", content: `The user has a question or request related to the following content: "${pageContent}". User's input: "${input}".` }
     ];
   
