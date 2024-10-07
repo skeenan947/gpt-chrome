@@ -29,6 +29,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 14px;
+            resize: vertical; /* Allow vertical resizing */
         }
         #buttonContainer {
             display: flex;
@@ -53,7 +54,7 @@
 <body>
     <div id="contentAssistantSidebar">
         <div id="chatArea"></div>
-        <input id="userInput" type="text" placeholder="Type a message..."/>
+        <textarea id="userInput" placeholder="Type a message..." rows="3"></textarea>
         <div id="buttonContainer">
             <button id="sendBtn">Send</button>
             <button id="clearBtn">Clear Conversation</button>

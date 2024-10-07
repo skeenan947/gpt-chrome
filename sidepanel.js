@@ -21,7 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (userInput) {
         userInput.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
-                sendMessage();
+                if (event.shiftKey || event.altKey) {
+                    // Allow new line creation
+                    event.preventDefault(); // Prevents the default action of Enter key
+                    const caret = userInput.selectionStart;
+                    userInput.setRangeText('\n', caret, caret, 'end');
+                } else {
+                    // Send message
+                    event.preventDefault(); // Prevents the default action of Enter key
+                    sendMessage();
+                }
             }
         });
         console.log("Enter key event listener attached to userInput"); // Debugging log
@@ -31,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Query the active tab and execute a script to get the page content
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const activeTab = tabs[0];
+        if (activeTab.url?.startsWith("chrome://")) return undefined;
         chrome.scripting.executeScript(
             {
                 target: { tabId: tabs[0].id },
@@ -78,7 +89,7 @@ async function sendMessage() {
     const userMessageDiv = document.createElement('div');
 
     // Label the user message
-    const formattedMessage = `<strong>User:</strong> ${input}`;
+    const formattedMessage = `<strong>User:</strong> ${input.replace(/\n/g, '<br>')}`;
 
     userMessageDiv.innerHTML = formattedMessage;
     userMessageDiv.style.marginBottom = '10px';
