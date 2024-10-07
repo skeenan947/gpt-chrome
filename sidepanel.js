@@ -131,20 +131,23 @@ function formatMessage(message) {
                                    .replace(/"/g, '&quot;')
                                    .replace(/'/g, '&#039;');
 
+    // Convert markdown to HTML using marked library
+    const htmlMessage = marked.parse(message);
+
     // Replace text in triple backticks with a formatted code block
-    return message
-        .replace(/```(\w+)?\s*([^`]+)```/g, (match, codeType, code) => {
-            const escapedCode = escapeHTML(code);
-            const languageClass = codeType ? ` class="language-${codeType}"` : '';
-            return `<pre${languageClass} style="background-color: #f8f8f8; border: 1px solid #ccc; border-radius: 5px; padding: 5px; white-space: pre-wrap; margin-left: 30px; color: #333;"><code>${escapedCode}</code></pre>`;
-        })
-        .replace(/`([^`]+)`/g, (match, p1) => `<code style="background-color: #f8f8f8; border: 1px solid #ccc; border-radius: 3px; padding: 2px; margin-left: 20px; color: #333;">${escapeHTML(p1)}</code>`)
-        .replace(/\n/g, '<br>'); // Convert newlines to <br> for HTML display
+    return htmlMessage
+        // .replace(/```(\w+)?\s*([^`]+)```/g, (match, codeType, code) => {
+        //     const escapedCode = escapeHTML(code);
+        //     const languageClass = codeType ? ` class="language-${codeType}"` : '';
+        //     return `<pre${languageClass} style="background-color: #f8f8f8; border: 1px solid #ccc; border-radius: 5px; padding: 5px; white-space: pre-wrap; margin-left: 30px; color: #333;"><code>${escapedCode}</code></pre>`;
+        // })
+        // .replace(/`([^`]+)`/g, (match, p1) => `<code style="background-color: #f8f8f8; border: 1px solid #ccc; border-radius: 3px; padding: 2px; margin-left: 20px; color: #333;">${escapeHTML(p1)}</code>`)
+        // .replace(/\n/g, '<br>'); // Convert newlines to <br> for HTML display
 }
 
 async function callOpenAI(pageContent, input, apiKey) {
     const messages = [
-      { role: "system", content: "You are a helpful assistant." },
+      { role: "system", content: "You are a document summarization and chat assistant.  If the content to be returned is in markdown, do not surround the markdown block in ```" },
       { role: "user", content: `The user has a question or request related to the following content: "${pageContent}". User's input: "${input}".` }
     ];
   
