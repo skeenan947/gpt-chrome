@@ -1,6 +1,6 @@
 # ChatGPT Content Assistant Chrome Extension
 
-This extension allows users to chat with the page on their current tab, asking questions of the content, and carrying on the conversation across multiple clicks / tabs.  All you need to do is to provide it an API Key
+This extension allows users to chat with the page on their current tab, asking questions of the content, and carrying on the conversation across multiple clicks / tabs.  All you need to do is to provide it an OpenAI API Key
 
 This guide will walk you through the process of installing the **ChatGPT Content Assistant** Chrome extension directly from its GitHub repository and provide usage instructions.
 
