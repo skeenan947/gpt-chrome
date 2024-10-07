@@ -4,6 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const userInput = document.getElementById('userInput');
     const contentDisplay = document.getElementById('contentDisplay');
 
+    if (userInput) {
+        // Set a minimum height and allow vertical scrolling
+        userInput.style.minHeight = '50px'; // Adjust as needed
+        userInput.style.overflowY = 'auto';
+
+        userInput.addEventListener('keydown', (event) => {
+            // ... existing code ...
+        });
+        console.log("Enter key event listener attached to userInput"); // Debugging log
+    } else {
+        console.error("userInput element not found");
+    }
+
+
     if (sendBtn) {
         sendBtn.addEventListener('click', sendMessage);
         console.log("Send button event listener attached"); // Debugging log
@@ -42,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         const activeTab = tabs[0];
         if (activeTab.url?.startsWith("chrome://")) return undefined;
+
         chrome.scripting.executeScript(
             {
                 target: { tabId: tabs[0].id },
@@ -147,7 +162,7 @@ function formatMessage(message) {
 
 async function callOpenAI(pageContent, input, apiKey) {
     const messages = [
-      { role: "system", content: "You are a document summarization and chat assistant.  If the content to be returned is in markdown, do not surround the markdown block in ```" },
+      { role: "system", content: "You are a document summarization and chat assistant.  If the content to be returned is in markdown, do not surround the markdown block in ```.  If the content is empty, tell the user that I cannot read the page contents, and ask the user to copy/paste the page content into the chat" },
       { role: "user", content: `The user has a question or request related to the following content: "${pageContent}". User's input: "${input}".` }
     ];
   
