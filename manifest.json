@@ -5,7 +5,11 @@
   "description": "Chat with the current web page content using OpenAI.",
   "permissions": ["storage", "activeTab", "scripting", "contextMenus", "sidePanel", "tabs"],
   "action": {
-    "default_icon": {}
+    "default_icon": {
+      "16": "logo.png",
+      "48": "logo.png",
+      "128": "logo.png"
+    }
   },
   "host_permissions": [
     "<all_urls>"
@@ -23,7 +27,11 @@
       "js": ["content.js"]
     }
   ],
-  "icons": {},
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
   "web_accessible_resources": [
     {
       "resources": ["settings.html"],
